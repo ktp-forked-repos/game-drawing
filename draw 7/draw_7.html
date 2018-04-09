@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>draw_7</title>
+		<link href="draw_7.css" type="text/css" rel="stylesheet" />
+		<script src="draw_7.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="toolbarWrapper">
+				<a class="toolbarBox textCenter textFormat1 noSelect button" onclick="State.saveGame()">Save</a>
+				<a class="toolbarBox textCenter textFormat1 noSelect button" onclick="State.reset()">Reset</a>
+				<a class="toolbarBox textCenter textFormat1 noSelect button" onclick="State.reload()">Reload</a>
+				<a class="toolbarBox textCenter textFormat1 noSelect button" onclick="Value.random()">Random</a>
+				<div class="dropdown noSelect textFormat1">
+					<a class="dropbtn toolbarBox textCenter textFormat1 noSelect" onclick="Toggle.dropdown('drpdwn_mode')">Mode</a>
+				  	<div id="drpdwn_mode" class="dropdown-content">
+				    	<a onclick="Value.setMode('user')">User</a>
+				    	<a onclick="Value.setMode('spiral')">Spiral</a>
+				  	</div>
+				</div>
+				<a id="pausePlay" class="disabled toolbarBox textCenter textFormat1 noSelect spiral" onclick="Toggle.animate()">Play</a>
+				<div id="drp_tool" class="dropdown noSelect textFormat1 spiral">
+					<a id="drp_tool_1" class="dropbtn toolbarBox textCenter textFormat1 noSelect spiral" onclick="Toggle.dropdown('drpdwn_tool')">Tools</a>
+					<div id="drpdwn_tool" class="dropdown-content">
+						<a id="tool_fuzz" onclick="Toggle.toolButtonPress('fuzz')">Fuzz</a>
+						<a id="tool_crush" onclick="Toggle.toolButtonPress('crush')">Crush</a>
+						<a id="tool_mosaic" onclick="Toggle.toolButtonPress('mosaic')">Mosaic</a>
+						<a id="tool_color" onclick="Toggle.toolButtonPress('color')">GrayScale</a>
+						<a id="tool_points" onclick="Toggle.toolButtonPress('points')">Two Points</a>
+					</div>
+				</div>
+				<div id="drp_fun" class="dropdown noSelect textFormat1 spiral">
+					<a id="drp_fun_1" class="dropbtn toolbarBox textCenter textFormat1 noSelect spiral" onclick="Toggle.dropdown('drpdwn_funct')">Functn</a>
+				  	<div id="drpdwn_funct" class="dropdown-content">
+				    	<a id="sin" onclick="Value.setFun('sin')">Sine</a>
+				    	<a id="cos" onclick="Value.setFun('cos')">Cosine</a>
+				    	<a id="tan" onclick="Value.setFun('tan')">Tangent</a>
+				    	<a id="sqrt" onclick="Value.setFun('sqrt')">Sqr.Rt.</a>
+				    	<a id="log" onclick="Value.setFun('log')">Log</a>
+				    	<a id="exsec" onclick="Value.setFun('exsec')">Excosecant</a>
+				    	<a id="sincos" onclick="Value.setFun('sincos')">Sin(Cos)</a>
+				    	<a id="cool_1" onclick="Value.setFun('cool_1')">Cool 1</a>
+				    	<a id="cool_2" onclick="Value.setFun('cool_2')">Cool_2</a>
+				  	</div>
+				</div>
+			</div>
+			<div id="mainContent">
+				<div class="sideBar">
+					<div class="sideBarLabel_L noSelect textFormat2 textRight">Red Value</div>
+					<input type="range" id="redValue" class="sideBarSlider noSelect" min="0" max="255" value = "127.5" oninput="State.updateFromSliders()">
+					<div class="sideBarLabel_L noSelect textFormat2 textRight">Red Modifiers</div>
+					<canvas id="rBox" class="boxSelector noSelect" width="156" height="156"></canvas>
+					<div class="sideBarLabel_L noSelect textFormat2 textRight">Green Value</div>
+					<input type="range" id="greenValue" class="sideBarSlider noSelect" min="0" max="255" value = "127.5" oninput="State.updateFromSliders()">
+					<div class="sideBarLabel_L noSelect textFormat2 textRight">Green Modifiers</div>
+					<canvas id="gBox" class="boxSelector noSelect" width="156" height="156"></canvas>
+					<div class="sideBarLabel_L noSelect textFormat2 textRight">Blue Value</div>
+					<input type="range" id="blueValue" class="sideBarSlider noSelect" min="0" max="255" value = "127.5" oninput="State.updateFromSliders()">
+					<div class="sideBarLabel_L noSelect textFormat2 textRight">Blue Modifiers</div>
+					<canvas id="bBox" class="boxSelector noSelect" width="156" height="156"></canvas>
+				</div>
+				<div id="gameBorder">
+					<div id="gameWrapper">
+						<canvas id="gameCanvas" class="noSelect"></canvas>
+					</div>
+				</div>
+				<div id="sideBarRight" class="sideBar" style="top: 100px;">
+					<div class="sideBarLabel_R noSelect textFormat2 textLeft">Zoom</div>
+					<input type="range" id="rings" class="sideBarSlider noSelect" min="1" max="5" value="1" step=".01" oninput="State.updateFromSliders()">
+					<div class="sideBarLabel_R noSelect textFormat2 textLeft">Point 1 X/Y Position</div>
+					<canvas id="xy1Box" class="boxSelector noSelect" width="156" height="156" style="background-color: #666547;"></canvas>
+					<div id="xy2Label" class="sideBarLabel_R noSelect textFormat2 textLeft twoPoints">Point 2 X/Y Position</div>
+					<canvas id="xy2Box" class="boxSelector noSelect twoPoints" width="156" height="156" style="background-color: #666547;"></canvas>
+					<div class="sideBarLabel_R noSelect textFormat2 textLeft">Animation Speed</div>
+					<input type="range" id="step" class="sideBarSlider noSelect" min=".001" max=".1" value=".005" step=".0001" oninput="State.updateFromSliders()">
+					<div class="sideBarLabel_R noSelect textFormat2 textLeft">X/Y Scale</div>
+					<canvas id="sclBox" class="boxSelector noSelect" width="156" height="156" style="background-color: #494949;"></canvas>
+					<div class="sideBarLabel_R noSelect textFormat2 textLeft">Resolution</div>
+					<div class = "textFormat2 textLeft noSelect">
+						<label class="control control-checkbox sideBarLabel_R">Maintain Scale
+					    	<input type="checkbox" name="resolution" id="scale" onclick="Toggle.scale()" />
+					    	<div class="control_indicator"></div>
+					    </label>
+					    <label class="control control-radio sideBarLabel_R">640 × 480 pixels
+					    	<input type="radio" name="resolution" id="640" onclick="Select.resolution('640')" />
+					    	<div class="control_indicator"></div>
+					    </label>
+					    <label class="control control-radio sideBarLabel_R">852 × 480 pixels
+					    	<input type="radio" name="resolution" id="852" onclick="Select.resolution('852')" />
+					    	<div class="control_indicator"></div>
+					    </label>
+					    <label class="control control-radio sideBarLabel_R">1280 × 720 pixels
+					    	<input type="radio" name="resolution" id="1280" onclick="Select.resolution('1280')" />
+					    	<div class="control_indicator"></div>
+					    </label>
+					    <label class="control control-radio sideBarLabel_R">1920 × 1080 pixels
+					    	<input type="radio" name="resolution" id="1920" onclick="Select.resolution('1920')" />
+					    	<div class="control_indicator"></div>
+					    </label>
+					    <label class="control control-radio sideBarLabel_R">2560 × 1440 pixels
+					    	<input type="radio" name="resolution" id="2560" onclick="Select.resolution('2560')" />
+					    	<div class="control_indicator"></div>
+					    </label>
+					    <label class="control control-radio sideBarLabel_R">4096 × 2160 pixels
+					    	<input type="radio" name="resolution" id="4096" onclick="Select.resolution('4096')" />
+					    	<div class="control_indicator"></div>
+					    </label>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

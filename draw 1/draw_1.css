@@ -1,0 +1,230 @@
+body {
+	background-color: #6FCB9F;
+}
+
+.textCenter {
+	text-align: center;
+}
+
+.textRight {
+	text-align: right;
+}
+
+.textFormat1 {
+	font-size: 25px;
+	color: #666547;
+	text-transform: uppercase;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+.noSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.button {
+	float: left;
+	border-radius: 5px;
+	background-color: #FFE28A;
+	cursor: pointer;
+}
+
+.button:hover {
+	box-shadow: 5px 5px 30px -10px #666547; 
+	color: black; 
+	cursor: pointer;
+}
+
+.button:active {
+	transform: translate(2px, 1px);
+	box-shadow: 2px 2px 30px -10px #666547;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    float: left;
+	border-radius: 5px;
+	background-color: #FFE28A;
+	cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    box-shadow: 5px 5px 30px -10px #666547; 
+	color: black; 
+	cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFEB3;
+    min-width: 160px;
+    z-index: 1;
+	margin: 7px 0 0 7px;
+	background-color: white;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #FFE28A;
+	box-shadow: 5px 5px 30px -10px #666547; 
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+	background-color: #FFFEB3;
+    color: black;
+    padding: 12px 16px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: #666547;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: #FFE28A;
+	border-radius: 7px; 
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+#wrapper {
+	margin: auto;
+	background-color: #FFFEB3;
+	height: 800px;
+	width: 1500px;
+	display: block;
+	border-radius: 10px;
+	box-shadow: 4px 4px 30px -5px #666547;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #FFE28A;
+}
+
+#toolbarWrapper {
+	height: 65px;
+	width: 1500px;
+	position: relative;
+}
+
+#mainContent {
+	height: 735px;
+	width: 1500px;
+	display: block;
+}
+
+.toolbarBox {
+	padding-top: 12.5px;
+	height: 32.5px;
+	width: 102.5px;
+	margin: 8.8888888888px 0 0 8.8888888888px;
+}
+
+#sideBar {
+	height: 720px;
+	width: 176px;
+	margin: 0 8.8px 8.8px 8.8px; 
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #FFE28A;
+	box-shadow: 5px 5px 30px -10px #666547; 
+	float: left;
+}
+
+.sideBarBox {
+	padding: 12.5px 10px 0 10px;
+	height: 32.5px;
+	width: 138.62222222224px;
+	margin: 8.8888888888px 0 0 8.8888888888px;
+	cursor: default;
+}
+
+.boxSelector {
+	height: 156px;
+	width: 156px;
+	margin: 7px 0 0 7px;
+	background-color: #6FCB9F;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #FFE28A;
+	box-shadow: 5px 5px 30px -10px #666547; 
+	position: relative;
+}
+
+ul {
+	margin: 0 0 0 0;
+}
+
+.sideBarTable {
+	float: left;
+	border-radius: 5px;
+	background-color: #FFE28A;
+	height: auto;
+	padding-bottom: 12.5px;
+}
+
+.sideBarSlider {
+	float: left;
+	border-radius: 5px;
+	background-color: #FFE28A;
+	height: auto;
+	padding-bottom: 2.5px;
+}
+
+#gameBorder {
+	height: 726px;
+	width: 1100px;
+	float: left;
+}
+
+#gameWrapper {
+	height: 720px;
+	width: 1094px;
+	background-color: white;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #FFE28A;
+	box-shadow: 5px 5px 30px -10px #666547; 
+	position: relative;
+}
+
+#gameCanvas {
+	height: 720px;
+	width: 1094px;
+	border-radius: 7px;
+}
+
+.center {
+	-ms-transform-origin: 50% 50%; /* IE 9 */
+	-webkit-transform-origin: 50% 50%; /* Chrome, Safari, Opera */
+	transform-origin: 50% 50%;
+}
+
+.invisible {
+	display: none;
+}
+
+.reverse {
+	-moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+	filter: FlipH;
+}

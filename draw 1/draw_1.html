@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>draw_1</title>
+		<link href="draw_1.css" type="text/css" rel="stylesheet" />
+		<script src="draw_1.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="toolbarWrapper">
+				<a id="pausePlay" class="toolbarBox textCenter textFormat1 noSelect button" onclick="toggleAnimate()">Play</a>
+				<a class="toolbarBox textCenter textFormat1 noSelect button" onclick="State.saveGame()">Save</a>
+				<a class="toolbarBox textCenter textFormat1 noSelect button" onclick="State.reset()">Reset</a>
+				<a class="toolbarBox textCenter textFormat1 noSelect button" onclick="State.reload()">Reload</a>
+				<a id="tool_fuzz" class="toolbarBox textCenter textFormat1 noSelect button" onclick="toggleFuzz()">Fuzz</a>
+				<a id="tool_crush" class="toolbarBox textCenter textFormat1 noSelect button" onclick="toggleCrush()">Crush</a>
+				<a id="tool_mosaic" class="toolbarBox textCenter textFormat1 noSelect button" onclick="toggleMosaic()">Mosaic</a>
+				<div class="dropdown noSelect textFormat1">
+					<a class="dropbtn toolbarBox textCenter textFormat1 noSelect" onclick="myFunction()">Functn</a>
+				  	<div id="myDropdown" class="dropdown-content">
+				    	<a onclick="setFun('sin')">Sine</a>
+				    	<a onclick="setFun('cos')">Cosine</a>
+				    	<a onclick="setFun('tan')">Tangent</a>
+				    	<a onclick="setFun('sqrt')">Sqr.Rt.</a>
+				    	<a onclick="setFun('log')">Log</a>
+				    	<a onclick="setFun('atan')">Arctangent</a>
+				    	<a onclick="setFun('sincos')">Sin(Cos)</a>
+				  	</div>
+				</div>
+			</div>
+			<div id="mainContent">
+				<div id="sideBar">
+					<input type="range" id="redValue" class="sideBarBox sideBarSlider noSelect" min="0" max="255" value="0" oninput="State.update()">
+					<canvas id="rBox" class="boxSelector noSelect" onmousemove="cnvs_getCoordinates(event)" onmousedown="isTrue(true)" onmouseup="isTrue(false)" width="156" height="156" style="background-color: #FB2E01;"></canvas>
+					<input type="range" id="greenValue" class="sideBarBox sideBarSlider noSelect" min="0" max="255" value="0" oninput="State.update()">
+					<canvas id="gBox" class="boxSelector noSelect" onmousemove="cnvs_getCoordinates(event)" onmousedown="isTrue(true)" onmouseup="isTrue(false)" width="156" height="156" style="background-color: #68dd9d;"></canvas>
+					<input type="range" id="blueValue" class="sideBarBox sideBarSlider noSelect" min="0" max="255" value="0" oninput="State.update()">
+					<canvas id="bBox" class="boxSelector noSelect" onmousemove="cnvs_getCoordinates(event)" onmousedown="isTrue(true)" onmouseup="isTrue(false)" width="156" height="156" style="background-color: #68c7dd;"></canvas>
+				</div>
+				<div id="gameBorder">
+					<div id="gameWrapper">
+						<canvas id="gameCanvas" class="noSelect" onmousemove="cnvs_getCoordinates(event)"onclick="onClick(event)" width="550" height="360"></canvas>
+					</div>
+				</div>
+				<div id="sideBar">
+					<input type="range" id="rings" class="sideBarBox sideBarSlider noSelect" min="1" max="5" value="1" step=".01" oninput="State.update()">
+					<canvas id="xyBox" class="boxSelector noSelect" onmousemove="cnvs_getCoordinates(event)" onmousedown="isTrue(true)" onmouseup="isTrue(false)" width="156" height="156" style="background-color: #666547;"></canvas>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
